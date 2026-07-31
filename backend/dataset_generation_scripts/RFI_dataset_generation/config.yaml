@@ -4,12 +4,12 @@
 
 input:
   # Base directory that contains the SLC/, GRD/, and binarymask/ folders.
-  input_root: "/media/ubuntu_24_04/data/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs"
+  input_root: "/path/to/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs"
 
   # === Scene mapping CSV ===
   # Relative or absolute path to the CSV that maps scene number to GRD/SLC products.
   # If relative, it will be resolved relative to input_root.
-  scene_mapping: "/media/ubuntu_24_04/data/opensar/UAH_rfi_labeling/RFI_Codes_Python/scene_mapping.csv"
+  scene_mapping: "/path/to/opensar/UAH_rfi_labeling/RFI_Codes_Python/scene_mapping.csv"
 
   # === Scene selection ===
   # Scenes to process (1-based indices).
@@ -27,5 +27,5 @@ input:
 output:
   # Output directory. Root directory where per-scene outputs will be written.
   # Launcher should create subfolders like <output_root>/scene_001/, scene_002/, etc.
-  output_root: "/media/raid/opensar/artifacts/dataset_generation/rfi_test"
+  output_root: "/path/to/opensar/artifacts/dataset_generation/rfi_test"
 

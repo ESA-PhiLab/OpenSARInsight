@@ -3,8 +3,8 @@
 device: cuda
 
 data:
-  train_dir: /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train
-  val_dir:  /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/val
+  train_dir: /path/to/opensar/range_compressed_scaled/rfi-v2/train
+  val_dir:  /path/to/opensar/range_compressed_scaled/rfi-v2/val
 
 loader:
   batch_size: 4
@@ -36,7 +36,7 @@ train:
   seed: 42
 
 save:
-  dir: "/media/raid/opensar/code/backend/data/tmp/rfi_kd_test_05052026"
+  dir: "/path/to/opensar/code/backend/data/tmp/rfi_kd_test_05052026"
   resume: null
 
 distill:
@@ -50,7 +50,7 @@ distill:
     depth: 4
     bilinear: true
     dropout: 0.0
-    ckpt: "/media/raid/opensar/artifacts/models/rfi/checkpoints/BS64+lr3e-5+focal0.6/epoch_112.pth"
+    ckpt: "/path/to/opensar/artifacts/models/rfi/checkpoints/BS64+lr3e-5+focal0.6/epoch_112.pth"
 
   logits:
     temperature: 1.0
@@ -81,4 +81,4 @@ logger:
     log_images_every: 1    # log validation panels every N eval epochs
     num_val_images: 4
 
-transforms_cfg: /media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml
+transforms_cfg: /path/to/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml

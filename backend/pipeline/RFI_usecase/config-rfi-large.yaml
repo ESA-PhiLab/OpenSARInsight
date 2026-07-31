@@ -2,8 +2,8 @@
 
 device: cuda
 data:
-  train_dir: /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train
-  val_dir:  /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/val
+  train_dir: /path/to/opensar/range_compressed_scaled/rfi-v2/train
+  val_dir:  /path/to/opensar/range_compressed_scaled/rfi-v2/val
   
 loader:
   batch_size: 2 
@@ -35,7 +35,7 @@ train:
   seed: 42
 
 save:
-  dir: /media/raid/opensar/artifacts/models/rfi/testing/checkpoints/rfi_large_test_07052026
+  dir: /path/to/opensar/artifacts/models/rfi/testing/checkpoints/rfi_large_test_07052026
   resume: null
 
 postprocessing:
@@ -51,4 +51,4 @@ postprocessing:
   ring_outer_iters: 12    # Outer dilation iterations
   trim_fraction: 0.1      # Trim fraction for trimmed_mean
 
-transforms_cfg: /media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml
+transforms_cfg: /path/to/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml

@@ -1,5 +1,5 @@
 <p align="right">
-<img src="./docs/images/banner.png" alt="OpenSAR Banner" width="100%"/>
+<img src="./docs/images/opensar_banner.png" alt="OpenSAR Banner" width="100%"/>
 </p>
 
 [![Website](https://img.shields.io/badge/Website-philab.esa.int-blue)](https://philab.esa.int)
@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <p align="center" style="font-size:1.5em;">
-<strong>📡 OPENSARINSIGHT – RAW SAR DATA PROCESSING AND AI PIPELINES 📡</strong>
+<strong>📡 OpenSAR Insight – From space to action: AI-powered satellites detecting floods, dark vessels, and radio interference instantly 📡</strong>
 </p>
 
 
@@ -26,30 +26,6 @@ Current supported applications include:
 - 🚢 Vessel Detection
 - 🌊 Flood Detection
 - 📡 Radio Frequency Interference (RFI) Detection
-
----
-
-# 📌 Project Overview
-
-The project supports the complete SAR AI workflow:
-
-- Level-0 RAW preparation
-- Range compression
-- SLC / GRD processing
-- Dataset generation
-- Dataset splitting
-- AI preprocessing
-- Model training
-- Model evaluation
-- Model inference
-- Geocoding of detections
-
-The processing chain currently supports multiple Sentinel-1 processing levels:
-
-- Level-0 RAW
-- Range Compressed
-- Single Look Complex (SLC)
-- Ground Range Detected (GRD)
 
 ---
 

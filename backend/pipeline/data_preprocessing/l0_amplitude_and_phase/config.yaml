@@ -1,2 +1,2 @@
 L0_patch:
-  sample_data: '/media/raid/opensar/artifacts/data_preprocessing/l0_amplitude_and_phase/sample_data/s1a-iw-raw-s-vh-20200407t052956-20200407t053029-032017-03b2e2-IW3-VD_439.dat'
+  sample_data: '/path/to/opensar/artifacts/data_preprocessing/l0_amplitude_and_phase/sample_data/s1a-iw-raw-s-vh-20200407t052956-20200407t053029-032017-03b2e2-IW3-VD_439.dat'

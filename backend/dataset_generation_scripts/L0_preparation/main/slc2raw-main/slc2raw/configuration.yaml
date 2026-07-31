@@ -1,4 +1,4 @@
-label_folder: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_full_split/rfi_aresys_dataset/train/labels/xml_labelling/"
-product_folder: "/media/ubuntu_24_04/data/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs/slc/"
-output_file: "/media/ubuntu_24_04/data/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs/output.npy"
-log_file: "/media/raid/opensar/code/backend/data/tmp/traceability.log"
+label_folder: "/path/to/OpenSAR/data/use_cases/rfi/aresys_full_split/rfi_aresys_dataset/train/labels/xml_labelling/"
+product_folder: "/path/to/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs/slc/"
+output_file: "/path/to/opensar/UAH_rfi_labeling/RFI_Codes_Python/inputs/output.npy"
+log_file: "/path/to/opensar/code/backend/data/tmp/traceability.log"

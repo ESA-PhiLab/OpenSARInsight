@@ -1,7 +1,7 @@
 # YOLO Pose Dataset Configuration
 # Vessel detection with 1 keypoint (vessel center)
 
-path: /media/raid/opensar/yolo_dataset_vessel_elong_filtered   #/media/raid/opensar/yolo_dataset_true_vessels_filtered
+path: /path/to/opensar/yolo_dataset_vessel_elong_filtered   #/path/to/opensar/yolo_dataset_true_vessels_filtered
 train: images/train
 val: images/val
 test: images/test

@@ -1,25 +1,25 @@
 rfi_large:
-  cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-large.yaml"
-  weights_path: "/media/raid/opensar/artifacts/models/rfi/large_model/checkpoint_artifacts/BS64+lr3e-5+focal0.6/epoch_112.pth"
-  test_path: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/test2"
-  slc_path: "/media/raid/opensar/data_baseline/rfi_complexpatches_tiff/"
-  out_path: "/media/raid/opensar/code/backend/data/tmp/rfi_range_compressed_inference_outputs"
-  rescaled_output_path: "/media/raid/opensar/code/backend/data/tmp/end2end_rescaled_rfi_2"
-  prediction_mask_dir: "/media/raid/opensar/code/backend/data/tmp/rfi_range_compressed_inference_outputs/prediction_masks_large"
-  postprocessing_output_dir: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_large_2"
+  cfg_path: "/path/to/opensar/code/backend/pipeline/RFI_usecase/config-rfi-large.yaml"
+  weights_path: "/path/to/opensar/artifacts/models/rfi/large_model/checkpoint_artifacts/BS64+lr3e-5+focal0.6/epoch_112.pth"
+  test_path: "/path/to/opensar/range_compressed_scaled/rfi-v2/test2"
+  slc_path: "/path/to/opensar/data_baseline/rfi_complexpatches_tiff/"
+  out_path: "/path/to/opensar/code/backend/data/tmp/rfi_range_compressed_inference_outputs"
+  rescaled_output_path: "/path/to/opensar/code/backend/data/tmp/end2end_rescaled_rfi_2"
+  prediction_mask_dir: "/path/to/opensar/code/backend/data/tmp/rfi_range_compressed_inference_outputs/prediction_masks_large"
+  postprocessing_output_dir: "/path/to/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_large_2"
   thr: 0.404
   stride_multiple: 16
   input_shape: [4, 1520, 1520]
 
 rfi_small:
-  cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-kd.yaml"
-  weights_path: "/media/raid/opensar/artifacts/models/rfi/checkpoints/focal+lr1e-4+bs4+kdfeature/student_epoch_100.pth"
-  test_path: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/test2"
-  slc_path: "/media/raid/opensar/data_baseline/rfi_complexpatches_tiff/"
-  out_path: "/media/raid/opensar/code/backend/data/tmp/rfi_rc_sm_inference_outputs"
-  rescaled_output_path: "/media/raid/opensar/code/backend/data/tmp/end2end_rescaled_rfi_small"
-  prediction_mask_dir: "/media/raid/opensar/code/backend/data/tmp/rfi_rc_sm_inference_outputs/prediction_masks_small"
-  postprocessing_output_dir: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_kd"
+  cfg_path: "/path/to/opensar/code/backend/pipeline/RFI_usecase/config-rfi-kd.yaml"
+  weights_path: "/path/to/opensar/artifacts/models/rfi/checkpoints/focal+lr1e-4+bs4+kdfeature/student_epoch_100.pth"
+  test_path: "/path/to/opensar/range_compressed_scaled/rfi-v2/test2"
+  slc_path: "/path/to/opensar/data_baseline/rfi_complexpatches_tiff/"
+  out_path: "/path/to/opensar/code/backend/data/tmp/rfi_rc_sm_inference_outputs"
+  rescaled_output_path: "/path/to/opensar/code/backend/data/tmp/end2end_rescaled_rfi_small"
+  prediction_mask_dir: "/path/to/opensar/code/backend/data/tmp/rfi_rc_sm_inference_outputs/prediction_masks_small"
+  postprocessing_output_dir: "/path/to/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_kd"
   thr: 0.325
   stride_multiple: 8
   input_shape: [4, 1520, 1520]

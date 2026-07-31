@@ -1,15 +1,15 @@
 # full path to directory containing the .SAFE products
-safe_dir_fp: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/full_raw_scenes/"
+safe_dir_fp: "/path/to/OpenSAR/data/use_cases/vessels/full_raw_scenes/"
 # csv file containing latitude, longitude and timestamp metadata
-input_csv_fp: "/media/raid/opensar/code/backend/SARFI/configuration/vessel_labels_vd_236_test.csv"
+input_csv_fp: "/path/to/opensar/code/backend/SARFI/configuration/vessel_labels_vd_236_test.csv"
 # csv file to write the output matching results to
-output_csv_fp: "/media/raid/opensar/artifacts/csvs/l2lslc_test_csvs/vd_236_matches_test_2.csv"
+output_csv_fp: "/path/to/opensar/artifacts/csvs/l2lslc_test_csvs/vd_236_matches_test_2.csv"
 # optional: directory for caching downloaded DEM tiles (cop-dem-glo-30).
 # If omitted or null, a temporary directory is created automatically.
-dem_cache_dir: "/media/raid/opensar/dem/"
+dem_cache_dir: "/path/to/opensar/dem/"
 # csv file used for testing
-test_csv_fp: "/media/raid/opensar/artifacts/csvs/l2lslc_test_csvs/test_slc_metadata_3.csv"
+test_csv_fp: "/path/to/opensar/artifacts/csvs/l2lslc_test_csvs/test_slc_metadata_3.csv"
 # number of products to generate matches for in the csv file
 test_num_prods: 10
 # paths to labels to use for testing
-test_labels_fp: "/media/ubuntu_24_04/data/opensar/Xview_Validation/vessel_label_audit/updated_xmls_shipfix_v11_full"
+test_labels_fp: "/path/to/opensar/Xview_Validation/vessel_label_audit/updated_xmls_shipfix_v11_full"

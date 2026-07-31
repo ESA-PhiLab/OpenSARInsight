@@ -1,15 +1,15 @@
 # Configuration file for Geocoder class (see geocode.py)
 
 # product_directory_path = path to directory containing L1 products
-product_directory_path: /mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/full_raw_scenes/
+product_directory_path: /path/to/OpenSAR/data/use_cases/rfi/full_raw_scenes/
 # orbit_directory_path = path to directory containing orbit files
-orbit_directory_path: /media/raid/opensar/POEORB/
+orbit_directory_path: /path/to/opensar/POEORB/
 # labels_directory_path = path to directory containing L1 label files
-labels_directory_path: /media/raid/opensar/new_labels/rfi/
+labels_directory_path: /path/to/opensar/new_labels/rfi/
 # dem_directory_path = path to directory to use for geocoding 
-dem_directory_path: /media/raid/opensar/artifacts/geocoding/out/
+dem_directory_path: /path/to/opensar/artifacts/geocoding/out/
 # lut_file_path = path to excel file containing the look up table for the dataset
-lut_file_path: /media/raid/opensar/code/backend/data/dataset_product_lut.xlsx
+lut_file_path: /path/to/opensar/code/backend/data/dataset_product_lut.xlsx
 # pol = polarization (vh or vv)
 pol: vh
 # dem_server = server to fetch the DEM from (aws or msft)

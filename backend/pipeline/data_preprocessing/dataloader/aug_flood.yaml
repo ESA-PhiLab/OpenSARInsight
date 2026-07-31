@@ -14,7 +14,7 @@ norm:
       mode: per_dataset
       channels: shared
       eps: 1e-12
-      stats_path: /media/ubuntu_24_04/data/opensar/range_compressed/flood/train/rc_norm_stats.json
+      stats_path: /path/to/opensar/range_compressed/flood/train/rc_norm_stats.json
       log_stats: false
 
 augs:

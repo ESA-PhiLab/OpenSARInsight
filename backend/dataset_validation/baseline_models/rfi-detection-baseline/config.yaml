@@ -2,10 +2,10 @@
 
 # Data settings
 data:
-  images_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches1_SLC_VH"
-  images_0_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches0_SLC_VH"
-  masks_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_1"
-  masks_0_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_0"
+  images_dir: "/path/to/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches1_SLC_VH"
+  images_0_dir: "/path/to/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches0_SLC_VH"
+  masks_dir: "/path/to/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_1"
+  masks_0_dir: "/path/to/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_0"
   image_size: [1510, 1510]
   batch_size: 1
   val_split: 0.3

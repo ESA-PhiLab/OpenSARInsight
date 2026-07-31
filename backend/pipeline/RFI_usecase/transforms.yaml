@@ -38,5 +38,5 @@ norm:
       method: zscore4          
       mode: per_dataset        
       eps: 1e-6
-      stats_path: /media/raid/opensar/code/backend/pipeline/RFI_usecase/rfi_zscore_stats.json
+      stats_path: /path/to/opensar/code/backend/pipeline/RFI_usecase/rfi_zscore_stats.json
       log_stats: false

@@ -7,21 +7,21 @@ datapaths:
   # Structure: {dataset_root}/{split}/range_compressed_rescaled/*.npy
   #            {dataset_root}/{split}/labels/*.xml
   #            {dataset_root}/{split}/patches/*_SLC_*.tiff
-  dataset_root: '/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1'
+  dataset_root: '/path/to/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1'
 
   # ── 3-channel PNG representations ────────────────────────────────────────
-  rescaled_rc_patches_path_test:           '/media/raid/opensar/vessel_rc_rescaled_patches_png'
+  rescaled_rc_patches_path_test:           '/path/to/opensar/vessel_rc_rescaled_patches_png'
 
   # ── YOLO datasets ─────────────────────────────────────────────────────────
-  yolo_dataset_path:             '/media/raid/opensar/yolo_dataset' # SLC Dataset
-  yolo_dataset_rc_path:          '/media/raid/opensar/yolo_dataset_rc' # RC Dataset
+  yolo_dataset_path:             '/path/to/opensar/yolo_dataset' # SLC Dataset
+  yolo_dataset_rc_path:          '/path/to/opensar/yolo_dataset_rc' # RC Dataset
 
   # ── 3 Channels ─────────────────────────────────────────────────────────
-  rc_Ship_dataset: '/media/raid/opensar/rc_ship/'
-  yolo_dataset_elong_path: '/media/raid/opensar/yolo_dataset_vessel_elong'
-  yolo_dataset_vessel_elong_path: '/media/raid/opensar/yolo_dataset_vessel_vessel'
-  yolo_dataset_filtered_rc: '/media/raid/opensar/yolo_dataset_true_vessels_filtered'
-  yolo_dataset_full_un_filtered_rc: '/media/raid/opensar/yolo_dataset_vessel_vessel'
+  rc_Ship_dataset: '/path/to/opensar/rc_ship/'
+  yolo_dataset_elong_path: '/path/to/opensar/yolo_dataset_vessel_elong'
+  yolo_dataset_vessel_elong_path: '/path/to/opensar/yolo_dataset_vessel_vessel'
+  yolo_dataset_filtered_rc: '/path/to/opensar/yolo_dataset_true_vessels_filtered'
+  yolo_dataset_full_un_filtered_rc: '/path/to/opensar/yolo_dataset_vessel_vessel'
 # ═══════════════════════════════════════════════════════════════
 # Label Generation
 # ═══════════════════════════════════════════════════════════════
@@ -89,7 +89,7 @@ training:
 kd:
   enabled: true
 
-  teacher_weights: /media/raid/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt
+  teacher_weights: /path/to/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt
 
   weight: 0.02
   warmup_epochs: 30
@@ -106,10 +106,10 @@ kd:
 # Inference
 # ═══════════════════════════════════════════════════════════════
 inference:
-  model_path: '/media/raid/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt'
-  test_images_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/images/test'
-  test_labels_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/labels/test'
-  slc_patches_dir: '/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1/test/patches'
+  model_path: '/path/to/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt'
+  test_images_dir: '/path/to/opensar/yolo_dataset_true_vessels_filtered/images/test'
+  test_labels_dir: '/path/to/opensar/yolo_dataset_true_vessels_filtered/labels/test'
+  slc_patches_dir: '/path/to/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1/test/patches'
   output_dir: './test_set/'
 
   iou_threshold: 0.50    # Lower = fewer duplicate predictions
