@@ -1,19 +1,10 @@
-![GitHub stars](https://img.shields.io/github/stars/OpenSARInsight/backend.svg)
-![GitHub forks](https://img.shields.io/github/forks/OpenSARInsight/backend.svg)
-![GitHub issues](https://img.shields.io/github/issues/OpenSARInsight/backend.svg)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/oOpenSARInsight/backend.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/OpenSARInsight/backend.svg)
-![GitHub code size](https://img.shields.io/github/languages/code-size/OpenSARInsight/backend.svg)
-![GitHub top language](https://img.shields.io/github/languages/top/OpenSARInsight/backend.svg)
-![GitHub repo size](https://img.shields.io/github/repo-size/OpenSARInsight/backend.svg)
-![GitHub contributors](https://img.shields.io/github/contributors/OpenSARInsight/backend.svg)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-
 <p align="right">
 <img src="./docs/images/banner.png" alt="OpenSAR Banner" width="100%"/>
 </p>
+
+[![Website](https://img.shields.io/badge/Website-philab.esa.int-blue?style=for-the-badge)](https://philab.esa.int)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <p align="center" style="font-size:1.5em;">
 <strong>📡 OPENSARINSIGHT – RAW SAR DATA PROCESSING AND AI PIPELINES 📡</strong>
@@ -30,8 +21,6 @@ This project has been funded and supported by ESA’s Φ-lab.
 
 This repository contains all software required to generate AI-ready datasets from Sentinel-1 SAR, preprocess SAR imagery, train deep learning models, validate their performance, and perform inference across multiple Earth Observation applications.
 
-The repository has been designed as a modular framework where each component can be used independently or combined into complete end-to-end processing pipelines.
-
 Current supported applications include:
 
 - 🚢 Vessel Detection
@@ -42,7 +31,7 @@ Current supported applications include:
 
 # 📌 Project Overview
 
-The backend supports the complete SAR AI workflow:
+The project supports the complete SAR AI workflow:
 
 - Level-0 RAW preparation
 - Range compression
@@ -67,7 +56,7 @@ The processing chain currently supports multiple Sentinel-1 processing levels:
 # 👥 Authors
 
 - Indra Space ([profile](https://space.indragroup.com/en))  
-- INTA (National Institute of Aerospace Technology) ([profile](https://www.inta.es/INTA/es/index.html)
+- INTA (National Institute of Aerospace Technology) ([profile](https://www.inta.es/INTA/es/index.html))
 - Universidad de Alcalá de Henares ([profile](https://uah.es/es/))
 
 ---
@@ -76,7 +65,7 @@ The processing chain currently supports multiple Sentinel-1 processing levels:
 
 **OpenSARInsight**
 
-(Add project webpage when available)
+(project webpage will be launched soon)
 
 ---
 
