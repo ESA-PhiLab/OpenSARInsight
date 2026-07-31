@@ -1,32 +1,34 @@
-![GitHub stars](https://img.shields.io/github/stars/opensar-insight-consortium/backend.svg)
-![GitHub forks](https://img.shields.io/github/forks/opensar-insight-consortium/backend.svg)
-![GitHub issues](https://img.shields.io/github/issues/opensar-insight-consortium/backend.svg)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/opensar-insight-consortium/backend.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/opensar-insight-consortium/backend.svg)
-![GitHub code size](https://img.shields.io/github/languages/code-size/opensar-insight-consortium/backend.svg)
-![GitHub top language](https://img.shields.io/github/languages/top/opensar-insight-consortium/backend.svg)
-![GitHub repo size](https://img.shields.io/github/repo-size/opensar-insight-consortium/backend.svg)
-![GitHub contributors](https://img.shields.io/github/contributors/opensar-insight-consortium/backend.svg)
+![GitHub stars](https://img.shields.io/github/stars/OpenSARInsight/backend.svg)
+![GitHub forks](https://img.shields.io/github/forks/OpenSARInsight/backend.svg)
+![GitHub issues](https://img.shields.io/github/issues/OpenSARInsight/backend.svg)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/oOpenSARInsight/backend.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/OpenSARInsight/backend.svg)
+![GitHub code size](https://img.shields.io/github/languages/code-size/OpenSARInsight/backend.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/OpenSARInsight/backend.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/OpenSARInsight/backend.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/OpenSARInsight/backend.svg)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Note:** Replace `opensar-insight-consortium/backend` with the final GitHub repository name.
 
 <p align="right">
 <img src="./docs/images/banner.png" alt="OpenSAR Banner" width="100%"/>
 </p>
 
 <p align="center" style="font-size:1.5em;">
-<strong>📡 OPENSAR – END-TO-END SAR DATA PROCESSING AND AI PIPELINES 📡</strong>
+<strong>📡 OPENSARINSIGHT – RAW SAR DATA PROCESSING AND AI PIPELINES 📡</strong>
 </p>
+
 
 ---
 
-# OpenSAR 
+# OpenSARInsight 
 
-The **OpenSAR** provides the complete processing framework for the **OpenSAR ** project.
+**OpenSARInsight** is an early-phase project developing ML-ready datasets and algorithms for direct insight generation from raw SAR data. This is a first step toward efficient onboard implementation of end-to-end SAR inference pipelines for low-latency applications.
 
-It contains all software required to acquire Sentinel-1 SAR data, generate AI-ready datasets, preprocess SAR imagery, train deep learning models, validate their performance, and perform inference across multiple Earth Observation applications.
+This project has been funded and supported by ESA’s Φ-lab.
+
+This repository contains all software required to generate AI-ready datasets from Sentinel-1 SAR, preprocess SAR imagery, train deep learning models, validate their performance, and perform inference across multiple Earth Observation applications.
 
 The repository has been designed as a modular framework where each component can be used independently or combined into complete end-to-end processing pipelines.
 
@@ -42,8 +44,6 @@ Current supported applications include:
 
 The backend supports the complete SAR AI workflow:
 
-- Sentinel-1 data acquisition
-- Orbit download and management
 - Level-0 RAW preparation
 - Range compression
 - SLC / GRD processing
@@ -66,15 +66,15 @@ The processing chain currently supports multiple Sentinel-1 processing levels:
 
 # 👥 Authors
 
-OpenSAR Consortium
-
-(Add contributors here)
+- Indra Space ([profile](https://space.indragroup.com/en))  
+- INTA (National Institute of Aerospace Technology) ([profile](https://www.inta.es/INTA/es/index.html)
+- Universidad de Alcalá de Henares ([profile](https://uah.es/es/))
 
 ---
 
 # 📖 Project Reference
 
-**OpenSAR / AI4SAR**
+**OpenSARInsight**
 
 (Add project webpage when available)
 
