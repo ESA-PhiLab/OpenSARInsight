@@ -2,7 +2,7 @@
 <img src="./docs/images/banner.png" alt="OpenSAR Banner" width="100%"/>
 </p>
 
-[![Website](https://img.shields.io/badge/Website-philab.esa.int-blue?style=for-the-badge)](https://philab.esa.int)
+[![Website](https://img.shields.io/badge/Website-philab.esa.int-blue)](https://philab.esa.int)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
