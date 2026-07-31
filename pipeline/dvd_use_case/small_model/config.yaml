@@ -1,0 +1,116 @@
+# NOTE: this is the config for the "small_model" also known as lightweight  model for vessel detection use case
+# ═══════════════════════════════════════════════════════════════
+# Data Paths
+# ═══════════════════════════════════════════════════════════════
+datapaths:
+  # ── Unified dataset root ──────────────────────────────────────────────────
+  # Structure: {dataset_root}/{split}/range_compressed_rescaled/*.npy
+  #            {dataset_root}/{split}/labels/*.xml
+  #            {dataset_root}/{split}/patches/*_SLC_*.tiff
+  dataset_root: '/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1'
+
+  # ── 3-channel PNG representations ────────────────────────────────────────
+  rescaled_rc_patches_path_test:           '/media/raid/opensar/vessel_rc_rescaled_patches_png'
+
+  # ── YOLO datasets ─────────────────────────────────────────────────────────
+  yolo_dataset_path:             '/media/raid/opensar/yolo_dataset' # SLC Dataset
+  yolo_dataset_rc_path:          '/media/raid/opensar/yolo_dataset_rc' # RC Dataset
+
+  # ── 3 Channels ─────────────────────────────────────────────────────────
+  rc_Ship_dataset: '/media/raid/opensar/rc_ship/'
+  yolo_dataset_elong_path: '/media/raid/opensar/yolo_dataset_vessel_elong'
+  yolo_dataset_vessel_elong_path: '/media/raid/opensar/yolo_dataset_vessel_vessel'
+  yolo_dataset_filtered_rc: '/media/raid/opensar/yolo_dataset_true_vessels_filtered'
+  yolo_dataset_full_un_filtered_rc: '/media/raid/opensar/yolo_dataset_vessel_vessel'
+# ═══════════════════════════════════════════════════════════════
+# Label Generation
+# ═══════════════════════════════════════════════════════════════
+label_settings:
+  img_width: 512
+  distance_threshold_km: ~      # ~ = null (no filtering)
+  distance_metric: xview
+  is_vessel_filter: True
+
+# ═══════════════════════════════════════════════════════════════
+# Training
+# ═══════════════════════════════════════════════════════════════
+training:
+  data: /media/raid/opensar/code/backend/pipeline/dvd_use_case/small_model/data.yaml
+  student_weights: yolo26n-pose.pt
+
+  name: kd_test_1525_01052026
+  project: /media/raid/opensar/yolo_results/runs/pose
+
+  epochs: 300
+  batch: 16
+  nbs: 16
+  imgsz: 640
+  patience: 30
+
+  optimizer: AdamW
+  lr0: 0.0001
+  lrf: 0.01
+  weight_decay: 0.0005
+  cos_lr: true
+
+  conf: 0.001
+  iou: 0.5
+  val_conf: 0.001
+  val_iou: 0.5
+
+  augment: false
+  auto_augment: ""
+  fliplr: 0.0
+  flipud: 0.0
+  degrees: 5.0
+  translate: 0.1
+  scale: 0.2
+  shear: 0.0
+  perspective: 0.0
+  mosaic: 0.2
+  close_mosaic: 10
+  mixup: 0.0
+
+  pretrained: true
+  device: 0
+  workers: 4
+  exist_ok: true
+  save: true
+  plots: true
+  verbose: true
+
+  wandb:
+    enabled: true
+    project: VD YOLO on RC
+    entity: opensar-dvd-large-model
+    api_key: null
+
+kd:
+  enabled: true
+
+  teacher_weights: /media/raid/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt
+
+  weight: 0.02
+  warmup_epochs: 30
+  decay: false
+  verbose: true
+
+  feature_mode: attention
+  feature_normalize: true
+  feature_layers: [-4]
+
+  num_keypoints: 1
+  kpt_dims: 3
+# ═══════════════════════════════════════════════════════════════
+# Inference
+# ═══════════════════════════════════════════════════════════════
+inference:
+  model_path: '/media/raid/opensar/yolo_results/runs/pose/yolo26n-pose_feature_kd_from_s_640_300ep_feat4/weights/best.pt'
+  test_images_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/images/test'
+  test_labels_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/labels/test'
+  slc_patches_dir: '/media/raid/opensar/yolo_dataset/images/test'
+  output_dir: './test_set'
+
+  iou_threshold: 0.001            # Lower = fewer duplicate predictions
+  conf_threshold: 0.50         # Lower = more predictions
+  slc_img_size: 512

@@ -1,0 +1,33 @@
+# Configuration file for training U-Net on SLC SAR data
+
+# Data settings
+data:
+  images_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches1_SLC_VH"
+  images_0_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/patches/patches0_SLC_VH"
+  masks_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_1"
+  masks_0_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_baseline/rfi/masks/binary_masks_0"
+  image_size: [1510, 1510]
+  batch_size: 1
+  val_split: 0.3
+  
+  # Dataset size control
+  max_rfi_images: null    # Use 140 RFI images (null = use all)
+  max_clean_images: null    # Use only first 70 clean images (null = use all)
+  balance_classes: false    # Automatically balance RFI/clean counts
+
+# Training settings
+training:
+  num_epochs: 300
+  learning_rate: 0.0001
+  checkpoint_dir: "checkpoints"
+  patience: 15
+  min_delta: 0.001
+  use_augmentation: true
+
+# Model settings
+model:
+  input_channels: 1
+  output_classes: 1
+
+# Device settings
+device: "cuda"

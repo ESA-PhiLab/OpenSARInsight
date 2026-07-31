@@ -1,0 +1,48 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Docker and Git
+.dockerignore
+.git
+.gitignore
+
+# Python virtual env
+env/
+venv/
+.venv/
+
+# VSCode
+.vscode/
+
+# Test, build, coverage
+tests/
+.pytest_cache/
+.coverage
+.tox/
+coverage.xml
+htmlcov/
+
+# Build output
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Notebooks and cache
+*.ipynb
+.ipynb_checkpoints/
+.mypy_cache/
+.pyre/
+.pyright/
+
+# Logs
+*.log
+
+# Secrets and configs
+.env
+.env.*
+
+# OS cruft
+.DS_Store
+Thumbs.db

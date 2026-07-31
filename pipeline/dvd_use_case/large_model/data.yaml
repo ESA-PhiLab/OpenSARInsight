@@ -1,0 +1,14 @@
+# YOLO Pose Dataset Configuration
+# Vessel detection with 1 keypoint (vessel center)
+
+path: /media/raid/opensar/yolo_dataset_true_vessels_filtered
+train: images/train
+val: images/val
+test: images/test
+
+# Classes
+nc: 1
+names: ['vessel']
+
+# Keypoints
+kpt_shape: [1, 3]  # 1 keypoint, 3 values each (x, y, visibility)

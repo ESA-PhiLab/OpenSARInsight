@@ -1,0 +1,42 @@
+augs:
+  amp_phase:
+    enable: false        
+    amp_scale_range: [0.98, 1.02]
+    max_phase_shift: 0.0
+    per_pixel: false
+
+  dropout:
+    enable: false
+    bands_range: [[0.49, 0.51]]
+    bands_azimuth: []
+    soft: true
+    edge_taper: 0.2
+
+  trim:
+    enable: false
+    trim_frac_range: 0.96
+    trim_frac_azimuth: 0.99
+    window: hann
+
+  defocus:
+    enable: false
+    kappa: 6.0e-4
+
+  subsample:
+    enable: false
+    az_factor: 2
+    rg_factor: 1
+    down_mode: avg
+    up_mode: bilinear
+
+norm:
+  # per-dataset z-score on 4-channels RC data:
+  active: rfi_zscore
+
+  profiles:
+    rfi_zscore:
+      method: zscore4          
+      mode: per_dataset        
+      eps: 1e-6
+      stats_path: /media/raid/opensar/code/backend/pipeline/RFI_usecase/rfi_zscore_stats.json
+      log_stats: false

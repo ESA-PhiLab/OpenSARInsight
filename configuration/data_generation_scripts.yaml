@@ -1,0 +1,58 @@
+l0_to_range_compressed:
+  splits: ['train', 'test', 'val']
+  vessel_data_headers_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers"
+  rfi_data_headers_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/l0_headers"
+  flood_data_headers_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/l0_headers"
+  test_compression_dict:
+    patch_path: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/new_viewsar3_full_split/test/raw/s1a-iw-raw-s-vh-20200928t171756-20200928t171831-034562-0405ea-IW1-VD_3429.dat"
+    header_path: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_IW1-Burst_02-vv.npy"
+    cal_data_path: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelData_CAL1-IW1-Burst_02-vv.npy"
+    cal_header_path: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_CAL1-IW1-Burst_02-vv.npy"
+    rescaled_output_dir: "/media/raid/opensar/artifacts/range_compression/test_output/"
+  test_matching_list:
+    test_1:
+      patch: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/new_viewsar3_full_split/test/raw/s1a-iw-raw-s-vh-20200928t171756-20200928t171831-034562-0405ea-IW1-VD_3429.dat"
+      header: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_IW1-Burst_02-vv.npy"
+      cal_data: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelData_CAL1-IW1-Burst_02-vv.npy"
+      cal_header: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_CAL1-IW1-Burst_02-vv.npy"
+    test_2:
+      patch: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/new_viewsar3_full_split/test/raw/s1a-iw-raw-s-vv-20200928t171756-20200928t171831-034562-0405ea-IW1-VD_3394.dat" 
+      header: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_IW1-Burst_02-vh.npy"
+      cal_data: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelData_CAL1-IW1-Burst_02-vh.npy"
+      cal_header: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/l0_headers/S1A_IW_RAW__0SDV_20200928T171756_20200928T171831_034562_0405EA_2A56.SAFE/SentinelHeader_CAL1-IW1-Burst_02-vh.npy"
+
+fd_dataset_generation:
+  base_path: "/media/ubuntu_24_04/data/opensar/UAH_flood_labeling/FD_PYTHON_v2/FD_PYTHON_v2/output_py/205"
+  n_start: 1
+  n_end: 10
+  pol: "VV"
+  prefix: "DB_OPENSAR_FD_1"
+
+slc2raw:
+  config_path: "/media/raid/opensar/code/backend/dataset_generation_scripts/L0_preparation/main/slc2raw-main/slc2raw/configuration.yaml"
+
+orbit_file_downloader:
+  rfi_l1_orbit_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/orbit_files/L1/"
+  rfi_l1_orbit_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/orbit_files/L0/"
+
+sentinel_scene_downloader:
+  base_path: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/"
+
+dataset_splitting:
+  flood:
+    label_dir: "/path/to/the/xml-folder"
+    patches_dir: "/path/to/the/patches-folder"
+    raw_dir: "/path/to/the/raw-folder"
+    output_dir: "/path/to/the/output-folder/where/train/val/test/splits/are/saved"
+  rfi:
+    label_dir: "/path/to/the/xml-folder"
+    masks_dir: "/path/to/the/binary-mask-folder"
+    patches_dir: "/path/to/the/patches/folder"
+    raw_dir:     "/path/to/the/raw-folder"
+    output_dir:  "/path/to/the/output-folder/where/train/val/test/splits/are/saved"
+  vessel:
+    label_dir: "/path/to/the/xml-folder"
+    raw_dir: "/path/to/the/raw-folder"
+    patches_dir: "/path/to/the/patches-folder"
+    patches0_dir: "/path/to/the/patches0-folder"
+    output_dir: "/path/to/the/output-folder/where/train/val/test/splits/are/saved"

@@ -1,0 +1,53 @@
+[build-system]
+
+requires = ["setuptools>=68", "wheel"]
+
+build-backend = "setuptools.build_meta"
+
+[project]
+
+name = "dvd_use_case"
+
+version = "0.1.0"
+
+description = "YOLO pose for point regression and localization on OpenSAR vessel dataset"
+
+readme = "README.md"
+
+requires-python = ">=3.12"
+
+license = { text = "MIT" }
+
+authors = [
+
+    { name = "Abdulhameed Yunusa", email = "ayunusa@indracompany.com" },
+
+    { name = "Giorgia Gobbi",      email = "ggobbi@indra.es" }
+
+]
+
+classifiers = [
+
+    "Programming Language :: Python :: 3",
+
+    "License :: OSI Approved :: MIT License",
+
+    "Operating System :: OS Independent"
+
+]
+
+dependencies = [
+
+    # Runtime dependencies
+
+]
+
+[tool.setuptools.packages.find]
+
+where = ["."]
+
+include = ["dvd_use_case*", "large_model*", "small_model*"]
+
+[tool.setuptools]
+
+include-package-data = true

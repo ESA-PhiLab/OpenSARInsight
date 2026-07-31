@@ -1,0 +1,24 @@
+[tool.setuptools.packages.find]
+where = ["."]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "SARFI"
+version = "0.0.1"
+description = "Synthetic Aperture Radar File Indexer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Daniel Dutra", email = "dadutra@indracompany.com" }
+]
+dependencies = [
+    "pandas==2.2.3",
+    "PyYAML==6.0.3",
+    "xmltodict==1.0.4",
+    "scipy==1.15.3",
+    "dem_stitcher==2.5.13"
+]

@@ -1,0 +1,44 @@
+[project]
+name = "L0Patcher"
+
+description = "L0 patch generator from SAR data"
+
+readme = {file = "README.rst", content-type = "text/x-rst"}
+
+authors = [
+  { name = "Marcos Garcia (INTA)", email = "garciarm@inta.es" }
+]
+
+license = {text = "Apache-2.0"}
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+  "numpy",
+  "astropy"
+]
+
+dynamic = ["version"]
+
+requires-python = ">=3.8"
+
+[tool.setuptools]
+packages = ["L0Patcher"]
+
+[tool.setuptools.dynamic]
+version = {attr = "L0Patcher.__version__"}
+
+[project.scripts]
+L0Patcher = "L0Patcher.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61.0.0", "numpy", "astropy"]
+build-backend = "setuptools.build_meta"

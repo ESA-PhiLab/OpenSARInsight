@@ -1,0 +1,152 @@
+# NOTE: this is the config for the "large_model" also known as unrestricted model for vessel detection use case
+# ═══════════════════════════════════════════════════════════════
+# Data Paths
+# ═══════════════════════════════════════════════════════════════
+datapaths:
+  # ── Unified dataset root ──────────────────────────────────────────────────
+  # Structure: {dataset_root}/{split}/range_compressed_rescaled/*.npy
+  #            {dataset_root}/{split}/labels/*.xml
+  #            {dataset_root}/{split}/patches/*_SLC_*.tiff
+  dataset_root: '/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1'
+
+  # ── 3-channel PNG representations ────────────────────────────────────────
+  rescaled_rc_patches_path_test:           '/media/raid/opensar/vessel_rc_rescaled_patches_png'
+
+  # ── YOLO datasets ─────────────────────────────────────────────────────────
+  yolo_dataset_path:             '/media/raid/opensar/yolo_dataset' # SLC Dataset
+  yolo_dataset_rc_path:          '/media/raid/opensar/yolo_dataset_rc' # RC Dataset
+
+  # ── 3 Channels ─────────────────────────────────────────────────────────
+  rc_Ship_dataset: '/media/raid/opensar/rc_ship/'
+  yolo_dataset_elong_path: '/media/raid/opensar/yolo_dataset_vessel_elong'
+  yolo_dataset_vessel_elong_path: '/media/raid/opensar/yolo_dataset_vessel_vessel'
+  yolo_dataset_filtered_rc: '/media/raid/opensar/yolo_dataset_true_vessels_filtered'
+  yolo_dataset_full_un_filtered_rc: '/media/raid/opensar/yolo_dataset_vessel_vessel'
+# ═══════════════════════════════════════════════════════════════
+# Label Generation
+# ═══════════════════════════════════════════════════════════════
+label_settings:
+  img_width: 512
+  distance_threshold_km: ~      # ~ = null (no filtering)
+  distance_metric: xview
+  is_vessel_filter: True
+
+# ═══════════════════════════════════════════════════════════════
+# Training
+# ═══════════════════════════════════════════════════════════════
+training:
+  # Model
+  model: 'yolo26s-pose.pt' #
+  name: 'Yolo26s_on_filtered_maritime_Dataset'
+  pretrained: true
+  yaml_file: 'data.yaml'
+  # Core
+  epochs: 300
+  batch: 16
+  nbs: 16
+  imgsz: 640
+  patience: 30
+
+  optimizer: AdamW
+  lr0: 0.0001
+  lrf: 0.01
+  weight_decay: 0.0005
+  cos_lr: true
+
+  conf: 0.001
+  iou: 0.5
+  val_conf: 0.001
+  val_iou: 0.5
+
+  augment: true
+  auto_augment: ""
+  fliplr: 0.0
+  flipud: 0.0
+  degrees: 5.0
+  translate: 0.1
+  scale: 0.2
+  shear: 0.0
+  perspective: 0.0
+  mosaic: 0.2
+  close_mosaic: 10
+  mixup: 0.0
+
+  pretrained: true
+  device: 0
+  workers: 4
+  exist_ok: true
+  save: true
+  plots: true
+  verbose: true
+
+  wandb:
+    name: 'Yolo26s_on_filtered_maritime_Dataset'
+    enabled: true
+    project: VD YOLO on RC
+    entity: opensar-dvd-large-model
+    api_key: null
+
+kd:
+  enabled: true
+
+  teacher_weights: /media/raid/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt
+
+  weight: 0.02
+  warmup_epochs: 30
+  decay: false
+  verbose: true
+
+  feature_mode: attention
+  feature_normalize: true
+  feature_layers: [-4]
+
+  num_keypoints: 1
+  kpt_dims: 3
+# ═══════════════════════════════════════════════════════════════
+# Inference
+# ═══════════════════════════════════════════════════════════════
+inference:
+  model_path: '/media/raid/opensar/yolo_results/runs/pose/pose/yolo26s-pose_opensar_true_vessel_filtered_dataset_640px/weights/best.pt'
+  test_images_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/images/test'
+  test_labels_dir: '/media/raid/opensar/yolo_dataset_true_vessels_filtered/labels/test'
+  slc_patches_dir: '/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/vessel_viewsar3_dataset_FR_v1/test/patches'
+  output_dir: './test_set/'
+
+  iou_threshold: 0.50    # Lower = fewer duplicate predictions
+  conf_threshold: 0.002  # Lower = more predictions
+  imgsz: 640
+  val_split: 'test'
+  slc_img_size: 512
+
+# ═══════════════════════════════════════════════════════════════
+# Analysis — controls which buckets inference_analysis.py runs
+# ═══════════════════════════════════════════════════════════════
+# Set buckets to 'all' to run every bucket, or list specific ones:
+#   [polarization, wind, vessel_size, density, shore, swath]
+# Thresholds are editable per bucket type.
+analysis:
+  buckets: [shore] #'all'              # 'all' or list, e.g. [polarization, wind]
+
+  # ── Bucket thresholds ─────────────────────────────────────
+  wind:                         # Low: 0 ≤ wind < 4 | Medium: 4 ≤ wind < 8 | High: wind ≥ 8
+    low: 4
+    medium: 8
+    high: ~                     # no upper bound
+
+  vessel_size:                  # Small: length < 50 | Medium: 50 ≤ length < 150 | Large: length ≥ 150
+    small_vessel: 50
+    medium_vessel: 150
+    large_vessel: ~             # no upper bound
+
+  density:                      # Single: n ≤ 1 | Few: 2 ≤ n ≤ 4 | Dense: n ≥ 5
+    single_ship: 1
+    few_ships: 4
+    dense_scene: ~              # no upper bound
+
+  shore:                        # Near: 0–5 km | Mid: 5–20 km | Offshore: > 20 km
+    near_shore: 5
+    mid_shore: 20
+    offshore: ~                 # no upper bound
+
+  swath: {}                     # no thresholds — uses swath ID directly
+  

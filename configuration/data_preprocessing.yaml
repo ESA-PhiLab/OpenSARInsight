@@ -1,0 +1,43 @@
+binarmask_mapping:
+  folder1: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/new_kurosiwo_validation_sample_split/val/labels/mask"
+  folder2: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/flood/new_split/test/masknew"
+  output_folder: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/flood/new_split/test/mask"
+
+check_scene_sarproduct:
+  output_root: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/new_kurosiwo_validation_sample_split"
+  output_root1: "/home/hamk/OpenSAR/Repo"
+
+rfi_mask_copying:
+  npy_folder: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train"
+  png_folder: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train/mask"
+
+split_flood:
+  label_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/kurosiwo_validation_sample/labels/xml_labelling"
+  patches_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/kurosiwo_validation_sample/patches"
+  raw_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/flood/kurosiwo_validation_sample/raw"
+  output_root: "/media/raid/opensar/splitting_data/new_kurosiwo_validation_sample_split"
+
+split_rfi:
+  label_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_full/labels/xml_labelling"
+  masks_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_full/labels/binary_masks"
+  patches_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_full/patches"
+  raw_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/rfi/aresys_full/raw"
+  output_root: "/media/raid/opensar/splitting_data/new_aresys_full_split"
+
+split_vessel:
+  label_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/viewsar3_full/labels/20250520_xml"
+  patches_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/viewsar3_full/patches/patches"
+  patches0_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/viewsar3_full/patches/patches0"
+  raw_dir: "/mnt/appide_nas/data_lake/AI4SAR/OpenSAR/data/use_cases/vessels/viewsar3_full/raw"
+  output_root: "/media/raid/opensar/splitting_data/new_viewsar3_full_split"
+
+data_loader_quick_check:
+  data_dir: "/media/ubuntu_24_04/data/opensar/range_compressed/flood/train"
+
+read_l0_patch:
+  input_path: "/app/OpenSAR/Data/Data/use_cases/vessels/viewsar3_full/raw/s1a-iw-raw-s-vv-20200407t052956-20200407t053029-032017-03b2e2-IW3-VD_399.dat"
+
+check_iq_normalization: 
+  input_path: "/app/OpenSAR/Data/Data/use_cases/flood/kurosiwo_validation_sample/raw" 
+  output_path: "/media/raid/opensar/code/backend/data/tmp/check_iq_norm/iq_normalization_stats.txt"
+  

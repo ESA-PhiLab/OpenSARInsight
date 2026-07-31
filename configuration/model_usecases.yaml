@@ -1,0 +1,59 @@
+filter_dataset:
+  src: "/media/raid/opensar/yolo_dataset_vessel_vessel"
+  dst: "/media/raid/opensar/yolo_dataset_true_vessels_filtered"
+  splits: ["train", "val", "test"]
+
+rfi_inference:
+  test_dir: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/test2"
+  rapl_path: "/sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj"
+  unrestricted_model:
+    cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-large.yaml"
+    weights: "/media/raid/opensar/artifacts/models/rfi/checkpoints/BS64+lr3e-5+focal0.6/epoch_112.pth"
+    thr:  0.404
+    stride_multiple: 16
+    input_shape: [4, 1520, 1520]
+    postprocessing_output_dir: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_large"
+
+  lightweight_model:
+    cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-kd.yaml"
+    weights: "/media/raid/opensar/artifacts/models/rfi/checkpoints/focal+lr1e-4+bs4+kdfeature/student_epoch_100.pth"
+    thr: 0.325
+    stride_multiple: 8
+    input_shape: [4, 1520, 1520]
+    postprocessing_output_dir: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/post_processing/rfi_postprocessing_outputs_kd"
+
+rfi_train:
+  unrestricted_model:
+    cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-large.yaml"
+    tfm_cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml"
+    save_dir: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/checkpoints"
+
+evaluation_small_scratch:
+  cfg_path: "/media/raid/opensar/code/backend/pipeline/RFI_usecase/config-rfi-large.yaml"
+  weights : "/media/raid/opensar/artifacts/models/rfi/large_model/checkpoint_artifacts/BS64+lr3e-5+focal0.6/epoch_112.pth"
+  test_dir: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/test2"
+  single_npy: "/media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/test2/s1a-iw-raw-s-vh-20200515t032854-20200515t032926-032570-03c5ba-IW2-RFI_407_scaled.npy"
+  out_png: "/media/raid/opensar/code/backend/data/tmp/outputs/rfi_112.png"
+  sweep_thresholds_and_plot_outpath: "/media/raid/opensar/code/backend/data/tmp/outputs"
+
+generate_png_from_slc_tiff:
+  src_dir: "/media/raid/opensar/range_compressed_v2/vessels/slc_split"
+  dst_dir: "/media/raid/opensar/slc_patches_png"
+
+visualize_yolo:
+  dataset_path: "/media/raid/opensar/yolo_dataset_vessel_elong"
+  out_path: "yolo_label_visualizations"
+  splits: ['train', 'val', 'test']
+  samples_per_split: 10
+
+dataloader_test:
+  input_paths: 
+    - "/home/hamk/OpenSAR/Data/s1a-iw-raw-s-vh-20200126t052956-20200126t053029-030967-038e50-IW1-VD_3-Range_compressed1.npy"
+    - "/home/hamk/OpenSAR/Data/s1a-iw-raw-s-vh-20200126t052956-20200126t053029-030967-038e50-IW1-VD_5-Range_compressed1.npy"
+    - "/home/hamk/OpenSAR/Data/s1a-iw-raw-s-vh-20200126t052956-20200126t053029-030967-038e50-IW1-VD_2-Range_compressed1.npy"
+  out_path: "/media/raid/opensar/code/backend/data/tmp/aug_out"
+
+check_rc_normalization:
+  rc1_path: "/home/hamk/OpenSAR/Data/s1a-iw-raw-s-vh-20200126t052956-20200126t053029-030967-038e50-IW1-VD_5-Range_compressed1.npy"
+  rc2_path: "/home/hamk/OpenSAR/Data/s1a-iw-raw-s-vh-20200126t052956-20200126t053029-030967-038e50-IW1-VD_5-Range_compressed1.npy"
+  out_path: "/media/raid/opensar/code/backend/data/tmp/check_rc_normalization"

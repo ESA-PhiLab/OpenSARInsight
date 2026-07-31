@@ -1,0 +1,9 @@
+processing:
+  scenes_to_process: [1,3]
+paths:
+  input_root: "/media/raid/opensar/artifacts/dataset_generation/flood/input"
+  output_root: "/media/raid/opensar/artifacts/dataset_generation/flood_test"
+  floods_mapping_csv: "/media/raid/opensar/code/backend/dataset_generation_scripts/FD_dataset_generation/scene_mapping.csv"
+options:
+  USE_AOI_EXACT_POLYGON: false
+  SIZEPATCH: 512

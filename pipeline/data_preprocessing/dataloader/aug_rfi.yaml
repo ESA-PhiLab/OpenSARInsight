@@ -1,0 +1,49 @@
+norm:
+  active: per_dataset          # <- change to per_dataset or per-patch.
+  profiles:
+
+    per_patch:
+      method: rms-shared
+      mode: per_patch
+      channels: shared
+      eps: 1e-12
+      log_stats: false
+
+    per_dataset:
+      method: rms-shared
+      mode: per_dataset
+      channels: shared
+      eps: 1e-12
+      stats_path: /ABSOLUTE/OR/RELATIVE/path/to/rc_norm_stats.json
+      log_stats: false
+
+augs:
+  amp_phase:
+    enable: true
+    amp_scale_range: [0.85, 1.15]
+    max_phase_shift: 0.1
+    per_pixel: true
+
+  dropout:
+    enable: true
+    bands_range: [[0.45, 0.55]]
+    bands_azimuth: []
+    soft: true
+    edge_taper: 0.1
+
+  trim:
+    enable: true
+    trim_frac_range: 0.96
+    trim_frac_azimuth: 0.99
+    window: hann
+
+  defocus:
+    enable: true
+    kappa: 6.0e-4
+
+  subsample:
+    enable: true
+    az_factor: 2
+    rg_factor: 1
+    down_mode: avg
+    up_mode: bilinear

@@ -1,0 +1,6 @@
+/dataset/
+**/__pycache__/
+**/env/
+
+# Yolo
+yolov8n.pt

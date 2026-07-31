@@ -1,0 +1,54 @@
+############Configuration file for training the large RFI model on RC data###########
+
+device: cuda
+data:
+  train_dir: /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train
+  val_dir:  /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/val
+  
+loader:
+  batch_size: 2 
+  train_batch_size: 2       # effective batch can be larger via grad accumulation
+  val_batch_size: 2 
+  num_workers: 1
+  stride_multiple: 16   # UNet downsampling factor (2^depth)
+  ignore_index: 255
+
+model:
+  in_channels: 4
+  out_channels: 1
+  base_channels: 32  
+  depth:  4 
+  bilinear: true
+  dropout: 0.0
+  
+train:
+  epochs: 120
+  lr: 3e-5 
+  weight_decay: 1e-4 
+  optimizer: adam         # adamw | sgd
+  scheduler: none        # none | cosine | multistep. none here means fixed learning rate, If cosine or multistep, learning rate changes over epochs.
+  warmup_epochs: 3       # Used only if a scheduler is active. Linearly ramps LR for the first 3 epochs.
+  grad_clip: 0         # Clip total gradient norm to 1.0 to avoid spikes. 0 disables.
+  eval_every: 1          # Rrun validation every N epochs. 1 = every epoch.
+  resize_to: none          # loss/metrics computed at this size
+  pos_weight: none        # auto | none | float (e.g., 3.0)
+  seed: 42
+
+save:
+  dir: /media/raid/opensar/artifacts/models/rfi/testing/checkpoints/rfi_large_test_07052026
+  resume: null
+
+postprocessing:
+  enabled: true          # Enable post-processing during inference
+  save_images: false      # Save comparison images (set false for timing only)
+  filter_level: patch    # region (slower, precise) | patch (faster, simpler)
+  threshold_db: 5.0       # dB threshold for RFI detection
+  filter_mode: remove_high_rfi  # remove_high_rfi | keep_high_rfi
+  region_stat: p90        # mean | median | p90
+  background_stat: median # mean | median | trimmed_mean
+  min_region_area: 20     # Minimum connected region area in pixels
+  ring_inner_iters: 3     # Inner dilation iterations
+  ring_outer_iters: 12    # Outer dilation iterations
+  trim_fraction: 0.1      # Trim fraction for trimmed_mean
+
+transforms_cfg: /media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml

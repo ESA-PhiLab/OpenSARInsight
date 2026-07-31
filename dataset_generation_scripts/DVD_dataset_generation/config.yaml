@@ -1,0 +1,15 @@
+# ==========================
+# Configuration file
+# ==========================
+
+input:
+  slcvalidation: /media/ubuntu_24_04/data/opensar/UAH_vessel_labeling/DVD_Codes_Python/SLCvalidation.csv   # Path to the SLC validation CSV file
+  products_root: /media/ubuntu_24_04/data/opensar/UAH_vessel_labeling/DVD_Codes_Python/inputs   # Path to the folder containing SAR products
+  scene_mapping: /media/ubuntu_24_04/data/opensar/UAH_vessel_labeling/DVD_Codes_Python/scene_mapping.csv  # Path to the scene mapping CSV file
+  scenes_to_process: [7]
+  sizepatch: 512
+
+output:
+  output_root: /media/raid/opensar/artifacts/dataset_generation/dvd_test
+
+

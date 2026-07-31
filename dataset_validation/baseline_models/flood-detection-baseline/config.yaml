@@ -1,0 +1,27 @@
+# Configuration file for training U-Net on SLC SAR data
+
+# Data settings
+data:
+  train_images: "/path/to/kurosiwo_validation_sample_split/train/patches"
+  train_masks: "/path/to/kurosiwo_validation_sample_split/train/masks"
+  val_images: "/path/to/kurosiwo_validation_sample_split/val/patches"
+  val_masks: "/path/to/kurosiwo_validation_sample_split/val/masks"
+  test_images: "/path/to/kurosiwo_validation_sample_split/test/patches"
+  test_masks: "/path/to/kurosiwo_validation_sample_split/test/masks"
+  image_size: [512, 512]       # [height, width]
+  batch_size: 32
+
+
+# Training settings
+training:
+  num_epochs: 40
+  learning_rate: 0.00005
+  checkpoint_dir: "checkpoints"
+
+# Model settings
+model:
+  input_channels: 1            # 1 for grayscale SAR
+  output_classes: 1            # 1 for binary segmentation
+
+# Device settings
+device: "cuda"                 # "cuda" or "cpu"

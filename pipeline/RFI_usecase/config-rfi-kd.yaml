@@ -1,0 +1,97 @@
+############Configuration file for training the small RFI model on RC data###########
+
+device: cuda
+
+data:
+  train_dir: /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train
+  val_dir:  /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/val
+
+loader:
+  batch_size: 4
+  num_workers: 1
+  stride_multiple: 8     # UNet downsampling factor (2^depth)
+  ignore_index: 255
+
+model:
+  in_channels: 4
+  out_channels: 1
+  base_channels: 16       
+  depth: 3                 
+  bilinear: true
+  dropout: 0.0
+
+train:
+  epochs: 120
+  lr: 1e-4    
+  weight_decay: 1e-4 
+  optimizer: adam         # adam | adamw | sgd (must match your factory)
+  scheduler: none        # none | cosine | multistep
+  warmup_epochs: 3
+  amp: true                
+  grad_clip: 0
+  eval_every: 1
+  resize_to: none
+  accumulate_steps: 1
+  pos_weight: none         # auto | none | float (e.g., 3.0)
+  seed: 42
+
+save:
+  dir: /media/raid/opensar/code/backend/data/tmp/rfi_kd_test_05052026
+  resume: null
+
+postprocessing:
+  enabled: true           # Enable post-processing during inference
+  save_images: false       # Save comparison images (set false for timing only)
+  filter_level: patch    # region (slower, precise) | patch (faster, simpler)
+  threshold_db: 5.0       # dB threshold for RFI detection
+  filter_mode: remove_high_rfi  # remove_high_rfi | keep_high_rfi
+  region_stat: p90        # mean | median | p90
+  background_stat: median # mean | median | trimmed_mean
+  min_region_area: 20     # Minimum connected region area in pixels
+  ring_inner_iters: 3     # Inner dilation iterations
+  ring_outer_iters: 12    # Outer dilation iterations
+  trim_fraction: 0.1      # Trim fraction for trimmed_mean
+
+distill:
+  enable: true
+  type: features       # logits | features | hybrid | none
+
+  teacher:
+    in_channels: 4
+    out_channels: 1
+    base_channels: 32
+    depth: 4
+    bilinear: true
+    dropout: 0.0
+    ckpt: "/media/raid/opensar/artifacts/models/rfi/checkpoints/BS64+lr3e-5+focal0.6/epoch_112.pth"
+
+  logits:
+    temperature: 1.0
+    alpha_hard: 0.6
+    kd_loss: binary_bce  # or logit_mse # 
+
+  features:
+    taps: ["enc2","enc3","bottleneck"]
+    proj: "1x1"
+    norm: "at"           # l2 | l1 | cosine | at
+    weight: 1.0
+    per_layer_weights: [1.0, 1.0, 1.0]
+    detach_teacher: true
+    alpha_hard: 0.6
+
+  hybrid:
+    alpha_logits: 0.5
+
+
+# Unified logger options (console + optional wandb)
+logger:
+  level: INFO              # DEBUG | INFO | WARNING | ERROR
+  file: null               # e.g., /path/to/train_small.log (null = no file)
+  wandb:
+    enable: false
+    project: opensar-insight
+    run_name: student_kd
+    log_images_every: 1    # log validation panels every N eval epochs
+    num_val_images: 4
+
+transforms_cfg: /media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml

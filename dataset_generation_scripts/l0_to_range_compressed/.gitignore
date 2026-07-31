@@ -1,0 +1,8 @@
+build
+$PYTHON_CACHE$
+*__pycache__/
+.pytest_cache/
+build/
+*.pyc
+*.pyo
+*.pyd

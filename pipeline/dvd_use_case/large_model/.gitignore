@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Pytest caches
+.pytest_cache
+
+# models
+*.pt
+
+# Weights & Biases
+wandb/
+runs/
+wandb_login.txt
+
+# Plots
+test_set/
+yolo_label_visualizations/
+test_set_with_land_v1/
+test_set_with_land_v2_nbs_32/
+albumentations/
+# Yolo Redundant Files
+data_old.yaml
+data_slc.yaml
+
+# IPYNB
+notebooks/
+
+# Test scripts
+crop.py
+inference_slc.py
+view.py

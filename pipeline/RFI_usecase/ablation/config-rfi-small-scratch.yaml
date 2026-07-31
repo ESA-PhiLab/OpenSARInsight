@@ -1,0 +1,41 @@
+############Configuration file for training the small RFI model from scratch using a Lightweight U-Net on RC data###########
+
+device: cuda
+
+data:
+  train_dir: /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/train
+  val_dir:  /media/ubuntu_24_04/data/opensar/range_compressed_scaled/rfi-v2/val
+
+loader:
+  batch_size: 2 
+  train_batch_size: 2       # effective batch can be larger via grad accumulation
+  val_batch_size: 2 
+  num_workers: 1
+  stride_multiple: 8    # UNet downsampling factor (2^depth)
+  ignore_index: 255
+
+model:
+  in_channels: 4
+  out_channels: 1
+  base_channels: 16  
+  depth:  3 
+  bilinear: true
+  dropout: 0.0
+  
+train:
+  epochs: 80
+  lr: 1e-4 
+  weight_decay: 1e-4      # L2 regularization
+  optimizer: adam         # adamw | sgd
+  scheduler: none        # none | cosine | multistep. none here means fixed learning rate, If cosine or multistep, learning rate changes over epochs.
+  warmup_epochs: 3       # Used only if a scheduler is active. Linearly ramps LR for the first 3 epochs.
+  grad_clip: 0         # Clip total gradient norm to 1.0 to avoid spikes. 0 disables.
+  eval_every: 1          # Rrun validation every N epochs. 1 = every epoch.
+  resize_to: none          # loss/metrics computed at this size
+  pos_weight: none        # auto | none | float (e.g., 3.0)
+  seed: 42
+save:
+  dir: /media/raid/opensar/artifacts/models/rfi/testing/checkpoints/rfi_large_test_07052026
+  resume: null            
+
+transforms_cfg: /media/raid/opensar/code/backend/pipeline/RFI_usecase/transforms.yaml
