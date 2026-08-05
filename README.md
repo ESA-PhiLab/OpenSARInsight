@@ -86,7 +86,7 @@ The recommended way to run the backend is inside the provided Docker container.
 
 See:
 
-- [`docker/README.md`](docker/README.md)
+- [`backend/docker/README.md`](backend/docker/README.md)
 
 Typical workflow:
 
@@ -101,11 +101,11 @@ Typical workflow:
 
 Use the SentinelHub downloader located in
 
-- [`dataset_generation_scripts/sentinelhub-scene-downloader/`](dataset_generation_scripts/sentinelhub-scene-downloader/)
+- [`backend/dataset_generation_scripts/sentinelhub-scene-downloader/`](backend/dataset_generation_scripts/sentinelhub-scene-downloader/)
 
 Documentation:
 
-- [`dataset_generation_scripts/sentinelhub-scene-downloader/README.md`](dataset_generation_scripts/sentinelhub-scene-downloader/README.md)
+- [`backend/dataset_generation_scripts/sentinelhub-scene-downloader/README.md`](backend/dataset_generation_scripts/sentinelhub-scene-downloader/README.md)
 
 ---
 
@@ -113,7 +113,7 @@ Documentation:
 
 Dataset generation tools are located inside
 
-- [`dataset_generation_scripts/`](dataset_generation_scripts/)
+- [`backend/dataset_generation_scripts/`](backend/dataset_generation_scripts/)
 
 Each use case has its own dedicated pipeline.
 
@@ -124,7 +124,7 @@ Each use case has its own dedicated pipeline.
 The main pipeline entry point is
 
 ```
-pipeline/main/main_pipeline.py
+backend/pipeline/main/main_pipeline.py
 ```
 
 General syntax:
@@ -145,7 +145,7 @@ python main_pipeline.py --list
 
 Complete documentation:
 
-- [`pipeline/README.md`](pipeline/README.md)
+- [`backend/pipeline/README.md`](backend/pipeline/README.md)
 
 ---
 
@@ -157,22 +157,22 @@ Complete documentation:
 
 Location:
 
-- [`dataset_generation_scripts/`](dataset_generation_scripts/)
+- [`backend/dataset_generation_scripts/`](backend/dataset_generation_scripts/)
 
 This module contains all utilities required to build AI-ready datasets from Sentinel-1 products.
 
 | Component | Description |
 |------------|-------------|
-| [`sentinelhub-scene-downloader`](dataset_generation_scripts/sentinelhub-scene-downloader/) | Download Sentinel-1 products from the Copernicus Data Space Ecosystem |
-| [`DVD_dataset_generation`](dataset_generation_scripts/DVD_dataset_generation/) | Generate Vessel Detection datasets (SLC, GRD and RAW) |
-| [`FD_dataset_generation`](dataset_generation_scripts/FD_dataset_generation/) | Generate Flood Detection datasets |
-| [`RFI_dataset_generation`](dataset_generation_scripts/RFI_dataset_generation/) | Generate RFI segmentation datasets |
-| [`L0_preparation`](dataset_generation_scripts/L0_preparation/) | Decode Level-0 data and extract RAW patches |
-| [`l0_to_range_compressed`](dataset_generation_scripts/l0_to_range_compressed/) | Range compression of RAW patches |
-| [`SLC_to_FullRaw`](dataset_generation_scripts/SLC_to_FullRaw/) | Convert SLC detections into RAW coordinates |
-| [`orbital_file_downloader`](dataset_generation_scripts/orbital_file_downloader/) | Download Sentinel-1 POEORB files |
-| [`L1_tiling`](dataset_generation_scripts/L1_tiling/) | Convert L1 products into GeoTIFF tiles |
-| [`dataset_splitting`](dataset_generation_scripts/dataset_splitting/) | Create train / validation / test splits |
+| [`sentinelhub-scene-downloader`](backend/dataset_generation_scripts/sentinelhub-scene-downloader/) | Download Sentinel-1 products from the Copernicus Data Space Ecosystem |
+| [`DVD_dataset_generation`](backend/dataset_generation_scripts/DVD_dataset_generation/) | Generate Vessel Detection datasets (SLC, GRD and RAW) |
+| [`FD_dataset_generation`](backend/dataset_generation_scripts/FD_dataset_generation/) | Generate Flood Detection datasets |
+| [`RFI_dataset_generation`](backend/dataset_generation_scripts/RFI_dataset_generation/) | Generate RFI segmentation datasets |
+| [`L0_preparation`](backend/dataset_generation_scripts/L0_preparation/) | Decode Level-0 data and extract RAW patches |
+| [`l0_to_range_compressed`](backend/dataset_generation_scripts/l0_to_range_compressed/) | Range compression of RAW patches |
+| [`SLC_to_FullRaw`](backend/dataset_generation_scripts/SLC_to_FullRaw/) | Convert SLC detections into RAW coordinates |
+| [`orbital_file_downloader`](backend/dataset_generation_scripts/orbital_file_downloader/) | Download Sentinel-1 POEORB files |
+| [`L1_tiling`](backend/dataset_generation_scripts/L1_tiling/) | Convert L1 products into GeoTIFF tiles |
+| [`dataset_splitting`](backend/dataset_generation_scripts/dataset_splitting/) | Create train / validation / test splits |
 
 Each directory contains its own README with detailed usage instructions.
 
@@ -182,7 +182,7 @@ Each directory contains its own README with detailed usage instructions.
 
 Location:
 
-- [`docker/`](docker/)
+- [`backend/docker/`](backend/docker/)
 
 Provides a fully reproducible development environment including:
 
@@ -194,7 +194,7 @@ Provides a fully reproducible development environment including:
 
 See:
 
-- [`docker/README.md`](docker/README.md)
+- [`backend/docker/README.md`](backend/docker/README.md)
 
 ---
 
@@ -202,7 +202,7 @@ See:
 
 Location:
 
-- [`pipeline/`](pipeline/)
+- [`backend/pipeline/`](backend/pipeline/)
 
 Provides training, inference and evaluation for all supported AI models.
 
@@ -210,15 +210,15 @@ Provides training, inference and evaluation for all supported AI models.
 
 | Component | Description |
 |------------|-------------|
-| [`main`](pipeline/main/) | Unified CLI entry point |
-| [`data_preprocessing`](pipeline/data_preprocessing/) | Data augmentation and preprocessing |
-| [`dvd_use_case`](pipeline/dvd_use_case/) | YOLO-based Vessel Detection |
-| [`RFI_usecase`](pipeline/RFI_usecase/) | UNet-based RFI segmentation |
-| [`geocoding_block`](pipeline/geocoding_block/) | Convert image detections into geographic coordinates |
+| [`main`](backend/pipeline/main/) | Unified CLI entry point |
+| [`data_preprocessing`](backend/pipeline/data_preprocessing/) | Data augmentation and preprocessing |
+| [`dvd_use_case`](backend/pipeline/dvd_use_case/) | YOLO-based Vessel Detection |
+| [`RFI_usecase`](backend/pipeline/RFI_usecase/) | UNet-based RFI segmentation |
+| [`geocoding_block`](backend/pipeline/geocoding_block/) | Convert image detections into geographic coordinates |
 
 Documentation:
 
-- [`pipeline/README.md`](pipeline/README.md)
+- [`backend/pipeline/README.md`](backend/pipeline/README.md)
 
 ---
 
@@ -226,13 +226,13 @@ Documentation:
 
 Location:
 
-- [`SARFI/`](SARFI/)
+- [`backend/SARFI/`](backend/SARFI/)
 
 SARFI converts timestamped latitude/longitude coordinates into Sentinel-1 SLC coordinates.
 
 Documentation:
 
-- [`SARFI/README.md`](SARFI/README.md)
+- [`backend/SARFI/README.md`](backend/SARFI/README.md)
 
 ---
 
@@ -240,7 +240,7 @@ Documentation:
 
 Location:
 
-- [`model_validation/`](model_validation/)
+- [`backend/model_validation/`](backend/model_validation/)
 
 Contains utilities for evaluating model performance across the supported use cases.
 
@@ -250,7 +250,7 @@ Contains utilities for evaluating model performance across the supported use cas
 
 Location:
 
-- [`configuration/`](configuration/)
+- [`backend/configuration/`](backend/configuration/)
 
 Contains shared configuration files used across the project.
 
@@ -288,13 +288,13 @@ Every major component contains its own dedicated documentation.
 
 Main documentation:
 
-- [`docker/README.md`](docker/README.md)
-- [`pipeline/README.md`](pipeline/README.md)
-- [`SARFI/README.md`](SARFI/README.md)
+- [`backend/docker/README.md`](backend/docker/README.md)
+- [`backend/pipeline/README.md`](backend/pipeline/README.md)
+- [`backend/SARFI/README.md`](backend/SARFI/README.md)
 
 Dataset generation documentation:
 
-- [`dataset_generation_scripts/`](dataset_generation_scripts/)
+- [`backend/dataset_generation_scripts/`](backend/dataset_generation_scripts/)
 
 ---
 
@@ -361,21 +361,21 @@ This repository is licensed under the **MIT License**, except where otherwise no
 
 The following components use Ultralytics YOLO and therefore are distributed under the GNU Affero General Public License (AGPL-3.0):
 
-- `pipeline/main/`
-- `pipeline/dvd_use_case/`
-- `baseline_models/dark-vessel-detection-baseline/`
+- `backend/pipeline/main/`
+- `backend/pipeline/dvd_use_case/`
+- `backend/dataset_validation/baseline_models/dark-vessel-detection-baseline/`
 
 ### MIT Licensed Components
 
 All remaining components are distributed under the MIT License and can be used independently without AGPL restrictions, including:
 
-- `dataset_generation_scripts/`
-- `pipeline/data_preprocessing/`
-- `pipeline/RFI_usecase/`
-- `pipeline/geocoding_block/`
-- `SARFI/`
-- `configuration/`
-- `model_validation/`
+- `backend/dataset_generation_scripts/`
+- `backend/pipeline/data_preprocessing/`
+- `backend/pipeline/RFI_usecase/`
+- `backend/pipeline/geocoding_block/`
+- `backend/SARFI/`
+- `backend/configuration/`
+- `backend/model_validation/`
 
 See the [LICENSE](LICENSE) file for details.
 
