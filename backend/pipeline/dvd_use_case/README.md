@@ -10,16 +10,17 @@ YOLO-based vessel detection and pose estimation on OpenSAR datasets.
 dvd_use_case/
 ├── large_model/
 │   ├── config.yaml                 # Main config (paths, training, inference)
-│   ├── pytest.ini                  # Pytest config file 
+│   ├── pytest.ini                  # Pytest config file
 │   ├── data.yaml                   # YOLO dataset config
 │   ├── train.py                    # Main training script
-│   ├── patch_vessel_metadata.csv   # Label Summary Used for analysis 
+│   ├── train_tutorial.ipynb        # Training tutorial
+│   ├── data_preprocessing_tutorial.ipynb  # Data preprocessing tutorial
+│   ├── patch_vessel_metadata.csv   # Label Summary Used for analysis
 │   ├── scripts/
 │   │   ├── analysis.py             # Metadata-aware performance analysis
 │   │   ├── extract_patch_metadata.py
 │   │   ├── filter_dataset.py
 │   │   ├── generate_png_from.py
-│   │   ├── generate_yolo_labels.py
 │   │   ├── generate_yolo_labels.py
 │   │   ├── inference.py            # Run inference + save prediction labels
 │   │   ├── profile_model.py
@@ -27,7 +28,15 @@ dvd_use_case/
 │   ├── tests/                      # Unit tests
 │   ├── utilities/                  # Helpers (label conversion, visualization, etc.)
 │   └── runs/                       # Training outputs
-└── small_model/                    # Knowledge-distillation small model
+│
+└── small_model/
+    ├── utilities/
+    │   ├── kd_utilities.py         # Knowledge distillation utilities
+    │   └── read_yaml.py             # YAML configuration reader
+    ├── __init__.py
+    ├── config.yaml
+    ├── data.yaml
+    └── train_KD.py                 # Knowledge distillation training script
 ```
 
 ---
