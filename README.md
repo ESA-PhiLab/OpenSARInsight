@@ -41,8 +41,6 @@ Current supported applications include:
 
 **OpenSARInsight**
 
-(project webpage will be launched soon)
-
 ---
 
 # 📝 Repository Structure
