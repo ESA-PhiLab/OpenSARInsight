@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <p align="center" style="font-size:1.5em;">
-<strong>📡 OpenSAR Insight – From space to action: AI-powered satellites detecting floods, dark vessels, and radio interference instantly 📡</strong>
+<strong>OpenSAR Insight – From space to action: AI-powered satellites detecting floods, dark vessels, and radio interference instantly </strong>
 </p>
 
 
