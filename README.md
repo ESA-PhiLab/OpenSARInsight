@@ -379,7 +379,7 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-# 🌐 Additional Information
+# Additional Information
 
 The repository follows a modular architecture. Each component can be developed, tested, and deployed independently while remaining fully compatible with the complete OpenSAR processing chain.
 
