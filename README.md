@@ -23,13 +23,13 @@ This repository contains all software required to generate AI-ready datasets fro
 
 Current supported applications include:
 
-- 🚢 Vessel Detection
-- 🌊 Flood Detection
-- 📡 Radio Frequency Interference (RFI) Detection
+- Vessel Detection
+- Flood Detection
+- Radio Frequency Interference (RFI) Detection
 
 ---
 
-# 👥 Authors
+# Authors
 
 - Indra Space ([profile](https://space.indragroup.com/en))  
 - INTA (National Institute of Aerospace Technology) ([profile](https://www.inta.es/INTA/es/index.html))
@@ -37,13 +37,13 @@ Current supported applications include:
 
 ---
 
-# 📖 Project Reference
+# Project Reference
 
 **OpenSARInsight**
 
 ---
 
-# 📝 Repository Structure
+# Repository Structure
 
 ```
 backend/
@@ -76,7 +76,7 @@ backend/
 
 ---
 
-# 🛠️ Getting Started
+# Getting Started
 
 ## 1. Setup the Docker Environment
 
@@ -147,7 +147,7 @@ Complete documentation:
 
 ---
 
-# 📦 Main Components
+# Main Components
 
 ---
 
@@ -254,7 +254,7 @@ Contains shared configuration files used across the project.
 
 ---
 
-# 🎯 Supported AI Models
+# Supported AI Models
 
 Current models include:
 
@@ -273,14 +273,14 @@ The backend currently supports processing at multiple Sentinel-1 data levels:
 
 | Processing Level | Supported |
 |-----------------|-----------|
-| RAW (Level-0) | ✅ |
-| Range Compressed | ✅ |
-| SLC | ✅ |
-| GRD | ✅ |
+| RAW (Level-0) | Yes |
+| Range Compressed | Yes |
+| SLC | Yes |
+| GRD | Yes |
 
 ---
 
-# 📚 Documentation
+# Documentation
 
 Every major component contains its own dedicated documentation.
 
@@ -296,17 +296,17 @@ Dataset generation documentation:
 
 ---
 
-# 📊 Dataset Hosting
+# Dataset Hosting
 
 The datasets used by the OpenSAR project are hosted on the **OpenSAR Insight** organization on Hugging Face.
 
-👉 **Hugging Face Organization:** https://huggingface.co/opensar-insight
+**Hugging Face Organization:** https://huggingface.co/opensar-insight
 
 The repository hosts datasets for the different OpenSAR use cases, including:
 
-- 🚢 Vessel Detection
-- 🌊 Flood Detection
-- 📡 Radio Frequency Interference (RFI) Detection
+- Vessel Detection
+- Flood Detection
+- Radio Frequency Interference (RFI) Detection
 
 Datasets contain products at multiple Sentinel-1 processing levels, including:
 
@@ -351,7 +351,7 @@ Each dataset repository contains:
 Please refer to the individual dataset documentation for details on formats, labels, and preprocessing requirements.
 
 ---
-# 📄 License
+# License
 
 This repository is licensed under the **MIT License**, except where otherwise noted.
 
